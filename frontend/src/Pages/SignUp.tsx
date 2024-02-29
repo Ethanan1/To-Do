@@ -1,5 +1,7 @@
 import { Box, Button, Input, Text } from "@chakra-ui/react"
 import { useState } from "react"
+import axios from 'axios';
+
 
 const SignUp = () => {
     const [name, setName] = useState("");
@@ -28,11 +30,19 @@ const SignUp = () => {
     }
 
     const onSubmit = () => {
-        console.log("NAME", name);
-        console.log("EMAIL:", email);
-        console.log("USERNAME:", username);
-        console.log("PASSWORD:", password);
+        axios
+        .post("http://localhost:3005/auth/sign-up", {
+            name,
+            email,
+            username,
+            password,
+        }).then((response: any) => { // You can declare 'response' as 'any' or use the actual type if you know it
+            console.log('RESPONSE', response);
+        }).catch((error: any) => {
+            console.error('ERROR', error);
+        });
     }
+
 
     return (
         <Box>

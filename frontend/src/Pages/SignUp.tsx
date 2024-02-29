@@ -27,11 +27,6 @@ const SignUp = () => {
         setName(e.target.value);
     }
 
-    const onChangePassword = (e: any) => {
-        console.log(e.target.value);
-        setName(e.target.value);
-    }
-
     const onSubmit = () => {
         console.log("NAME", name);
         console.log("EMAIL:", email);
@@ -52,21 +47,21 @@ const SignUp = () => {
             >
                 <Box display="flex" flexDirection="column" gap={2} w="100">
                     <Text>Name: </Text>
-                    <Input type="text" />
+                    <Input type="text" onChange={onChangeName} />
                 </Box>
                 <Box display="flex" flexDirection="column" gap={2} w="100">
                     <Text>Email Address: </Text>
-                    <Input type="email" />
+                    <Input type="email" onChange={onChangeEmail}/>
                 </Box>
                 <Box display="flex" flexDirection="column" gap={2} w="100">
                     <Text>Username: </Text>
-                    <Input type="text" />
+                    <Input type="text" onChange={onChangeUsername}/>
                 </Box>
                 <Box display="flex" flexDirection="column" gap={2} w="100">
                     <Text>Password: </Text>
-                    <Input type="password" />
+                    <Input type="password" onChange={onChangePassword}/>
                 </Box>
-                <Button w="100">Submit</Button>
+                <Button w="100" onClick={onSubmit}>Submit</Button>
             </Box>
         </Box>
     )

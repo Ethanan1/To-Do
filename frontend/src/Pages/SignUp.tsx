@@ -14,17 +14,17 @@ const SignUp = () => {
 
     const onChangeEmail = (e: any) => {
         console.log(e.target.value);
-        setName(e.target.value);
+        setEmail(e.target.value);
     }
 
     const onChangeUsername = (e: any) => {
         console.log(e.target.value);
-        setName(e.target.value);
+        setUsername(e.target.value);
     }
 
     const onChangePassword = (e: any) => {
         console.log(e.target.value);
-        setName(e.target.value);
+        setPassword(e.target.value);
     }
 
     const onSubmit = () => {

@@ -2,6 +2,15 @@ import { Box, Button, FormControl, FormErrorMessage, FormHelperText, FormLabel, 
 import { useState } from "react"
 import axios from 'axios';
 
+const isInvalidEmail = (email: string) => {
+
+    const emailFormat = /\S+@\S+\.\S+/;
+    if (email.match(emailFormat) && email.length > 0) {
+      return false;
+    } else {
+        return true;
+    }
+};
 
 const SignUp = () => {
     const [name, setName] = useState("");
@@ -16,7 +25,7 @@ const SignUp = () => {
     const [submitClickedPassword, setSubmitClickedPassword] = useState(false);
 
     const isErrorName = name === "" && submitClickedName;
-    const isErrorEmail = email === "" && submitClickedEmail;
+    const isErrorEmail = isInvalidEmail(email) && submitClickedEmail;
     const isErrorUsername = username === "" && submitClickedUsername;
     const isErrorPassword = password === "" && submitClickedPassword;
 
@@ -47,7 +56,7 @@ const SignUp = () => {
         setSubmitClickedUsername(true);
         setSubmitClickedPassword(true);
 
-        if (name === "" || email === "" || username === "" || password === "") {
+        if (name === "" || isInvalidEmail(email) || username === "" || password === "") {
             console.log("Error!")
         } else {
             axios
